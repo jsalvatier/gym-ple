@@ -6,13 +6,13 @@ import numpy as np
 class PLEEnv(gym.Env):
     metadata = {'render.modes': ['human', 'rgb_array']}
 
-    def __init__(self, game_name='FlappyBird', display_screen=True):
+    def __init__(self, game_name='FlappyBird', display_screen=True, frame_skip=1):
         # open up a game state to communicate with emulator
         import importlib
         game_module_name = ('ple.games.%s' % game_name).lower()
         game_module = importlib.import_module(game_module_name)
         game = getattr(game_module, game_name)()
-        self.game_state = PLE(game, fps=30, display_screen=display_screen)
+        self.game_state = PLE(game, fps=30, display_screen=display_screen, frame_skip=frame_skip)
         self.game_state.init()
         self._action_set = self.game_state.getActionSet()
         self.action_space = spaces.Discrete(len(self._action_set))
