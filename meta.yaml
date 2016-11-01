@@ -1,0 +1,24 @@
+package: 
+  name: gym-ple
+  version: "v0.1js"
+
+source:
+  git_rev: "v0.1js"
+  git_url: https://github.com/jsalvatier/gym-ple.git
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
+test:
+  imports:
+    - gym_ple
+
+about:
+  home: none
+  license: BSD
+  license_file: none
